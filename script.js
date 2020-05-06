@@ -7,13 +7,13 @@ const googleDataBase = [
     'cafecat.com'
 ]
 
-const googleSearch = (searchInput) =>{
-    const matches = googleDataBase.filter(websites=>{
-        return websites.includes(searchInput);
+const googleSearch = (searchInput,db) =>{
+    const matches = db.filter(website=>{
+        return website.includes(searchInput);
     })
 
-   return matches > 3 ? matches.slice(0,3) : matches
+   return matches < 3 ? matches : matches.slice(0,3)
 
 }
-
-console.log(googleSearch('cat'));
+console.log(googleSearch('.com',googleDataBase));
+module.exports = googleSearch
